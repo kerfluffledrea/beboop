@@ -96,15 +96,14 @@ pub async fn play_sound_file(file_path: String) -> Result<(), String> {
         let stream_handle = OutputStreamBuilder::open_default_stream()
             .map_err(|e| format!("Failed to create audio stream: {}", e))?;
 
-        let file = File::open(&file_path).map_err(|e| format!("Failed to open file: {}", e))?;
+        let file = File::open(&file_path)
+            .map_err(|e| format!("Failed to open file: {}", e))?;
 
-        let source =
-            Decoder::try_from(file).map_err(|e| format!("Failed to decode audio: {}", e))?;
+        let source = Decoder::try_from(file)
+            .map_err(|e| format!("Failed to decode audio: {}", e))?;
 
-        let sink = Sink::connect_new(stream_handle.mixer());
-        sink.append(source);
-        sink.sleep_until_end();
-
+        stream_handle.mixer().add(source);
+        
         Ok(())
     })
     .await
