@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "dev": "unset LD_LIBRARY_PATH && vite",
+    "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "tauri": "tauri"

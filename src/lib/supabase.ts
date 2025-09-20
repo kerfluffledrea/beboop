@@ -21,7 +21,7 @@ export interface Database {
           status?: 'pending' | 'accepted' | 'blocked';
         };
       };
-      user_sounds: {
+      sounds: {
         Row: {
           id: string;
           user_id: string;
@@ -48,18 +48,6 @@ export interface Database {
           receiver: string;
           slot: number;
           sound_checksum: string;
-        };
-      };
-      peers: {
-        Row: {
-          id: string;
-          user_id: string;
-          device_info: string;
-          last_seen: string;
-        };
-        Insert: {
-          user_id: string;
-          device_info: string;
         };
       };
     };

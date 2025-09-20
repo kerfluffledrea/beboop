@@ -46,6 +46,7 @@ export async function removeSoundSlot(slot: number): Promise<void> {
 }
 
 export async function pickAudioFile(): Promise<string | null> {
+  console.log('c');
   const options: OpenDialogOptions = {
     multiple: false,
     filters: [
@@ -100,5 +101,4 @@ export async function getSoundInSlot(slot: number): Promise<SoundInfo | null> {
 }
 
 export const MAX_SLOTS = 9;
-export const DEFAULT_SLOT_RANGE = Array.from({ length: MAX_SLOTS }, (_, i) => i + 1);
 export type SupportedAudioFormat = (typeof SUPPORTED_AUDIO_FORMATS)[number];

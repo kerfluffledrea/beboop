@@ -1,5 +1,13 @@
 /* @refresh reload */
-import { render } from "solid-js/web";
-import App from "./App";
+import { render } from 'solid-js/web';
+import App from './App';
+import { AudioProvider } from './contexts/AudioContext';
 
-render(() => <App />, document.getElementById("root") as HTMLElement);
+render(
+  () => (
+    <AudioProvider>
+      <App />
+    </AudioProvider>
+  ),
+  document.getElementById('root') as HTMLElement
+);

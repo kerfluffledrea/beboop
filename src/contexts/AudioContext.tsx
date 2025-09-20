@@ -14,7 +14,7 @@ import {
   playSoundSlot,
   removeSoundSlot,
   SoundInfo,
-} from './tauriCommands';
+} from '../lib/tauriCommands';
 
 interface AudioContextType {
   sounds: Accessor<SoundInfo[]>;
@@ -101,7 +101,9 @@ export function AudioProvider(props: AudioProviderProps) {
   };
 
   const loadSound = async (slot: number, label?: string): Promise<boolean> => {
+    console.log('a');
     return withErrorHandling(async () => {
+      console.log('b');
       const filePath = await pickAndValidateAudioFile();
       if (!filePath) {
         throw new Error('No file selected');
